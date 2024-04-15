@@ -1,0 +1,54 @@
+{
+    "categories": 
+    [
+        {
+            "name" : "Pizza",
+            "subcategory" : [
+                "Italian Pizza",
+                "Neapolitan Pizza"
+            ]
+
+        },
+        {
+            "name" : "Sandwich",
+
+            "subcategory" : [
+                "Vegatabel",
+                "Masala"
+            ]
+        },
+        {
+            "name" : "Noodle",
+
+            "subcategory" : [
+                "Italian Pizza",
+                "Neapolitan Pizza"
+            ]
+        },
+
+        {
+            "name" : "Indian",
+
+            "subcategory" : [
+                "Italian Pizza",
+                "Neapolitan Pizza"
+            ]
+        },
+        {
+            "name" : "Punjabi",
+
+            "subcategory" : [
+                "Italian Pizza",
+                "Neapolitan Pizza"
+            ]
+        },
+        {
+            "name" : "SouthIndian",
+
+            "subcategory" : [
+                "Italian Pizza",
+                "Neapolitan Pizza"
+            ]
+        }
+    ]
+}

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "540449882711",
+    "project_id": "foododeringapplication-f7224",
+    "storage_bucket": "foododeringapplication-f7224.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:540449882711:android:23a3d84fbd698bb0689912",
+        "android_client_info": {
+          "package_name": "com.example.foododering_application"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBO8Q5QJGkH_GBUJxlN30qq6x_LUNk-cRM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
