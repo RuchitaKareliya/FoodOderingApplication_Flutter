@@ -10,6 +10,8 @@ import 'package:foododering_application/widgets_common/custom_textfield.dart';
 import 'package:foododering_application/widgets_common/our_button.dart';
 import 'package:foododering_application/consts/colors.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class EditProfileScreen extends StatelessWidget {
   final dynamic data;
@@ -54,7 +56,7 @@ class EditProfileScreen extends StatelessWidget {
                 ourButton(
                     color: Color.fromRGBO(183, 104, 58, 1),
                     onPress: () {
-                      Get.find<ProfileController>().changeImage(context);
+                      //Get.find<ProfileController>().changeImage(context);
                       controller.changeImage(context);
                     },
                     textColor: whiteColor,
@@ -74,7 +76,7 @@ class EditProfileScreen extends StatelessWidget {
                     isPass: true),
                 10.heightBox,
                 customTextField(
-                    controller: controller.oldpassController,
+                    controller: controller.newpassController,
                     hint: passwordHint,
                     title: newpass,
                     isPass: true),
@@ -89,6 +91,7 @@ class EditProfileScreen extends StatelessWidget {
                             color: brownColor,
                             onPress: () async {
                               controller.isloading(true);
+
                               //if image is not selecte
 
                               if (controller.profileImgPath.value.isNotEmpty) {
@@ -98,11 +101,11 @@ class EditProfileScreen extends StatelessWidget {
                               }
 
                               //id old password mactch database
-                              if (data['passwod'] == controller.oldpassController.text) {
+                              if (data['password'] == controller.oldpassController.text) {
                                 await controller.changeAuthPassword(
                                   email: data['email'],
                                   password: controller.oldpassController.text,
-                                  newpass: controller.newpassController.text
+                                  newpassword: controller.newpassController.text
                                 );
                                 await controller.updateProfile(
                                     imgUrl: controller.profileImageLink,
@@ -116,7 +119,7 @@ class EditProfileScreen extends StatelessWidget {
                               }
                             },
                             textColor: whiteColor,
-                            title: "save")),
+                            title: "Save")),
               ],
             )
                 .box

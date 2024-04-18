@@ -44,7 +44,7 @@ class ProfileController extends GetxController {
     isloading(false);
   }
 
-  changeAuthPassword({email,password,newpass}) async {
+  changeAuthPassword({email,password,newpassword}) async {
     final cred = EmailAuthProvider.credential(email: email, password: password);
     await currentUser!.reauthenticateWithCredential(cred).then((value) {
       currentUser!.updatePassword(newpass);
