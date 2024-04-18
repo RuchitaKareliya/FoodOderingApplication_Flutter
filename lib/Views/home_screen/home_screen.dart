@@ -1,14 +1,18 @@
 import 'package:foododering_application/Views/home_screen/components/featured_button.dart';
 import 'package:foododering_application/consts/consts.dart';
 import 'package:foododering_application/consts/list.dart';
+import 'package:foododering_application/controllers/home_controller.dart';
 import 'package:foododering_application/widgets_common/home_buttons.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    //var controller = Get.put(HomeController());
+
     return Container(
       padding: const EdgeInsets.all(12),
       color: lightGrey,

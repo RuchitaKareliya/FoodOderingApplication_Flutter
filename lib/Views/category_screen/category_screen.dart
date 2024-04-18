@@ -13,6 +13,7 @@ class CategoryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var conroller = Get.put(ProductController());
+
     return bgWidget(
         child: Scaffold(
       appBar: AppBar(
@@ -48,7 +49,7 @@ class CategoryScreen extends StatelessWidget {
                   .outerShadowSm
                   .make()
                   .onTap(() {
-                    conroller.getSubCategoies(categoriesList[index]);
+                conroller.getSubCategoies(categoriesList[index]);
                 Get.to(() => CategoryDetails(title: categoriesList[index]));
               });
             })),

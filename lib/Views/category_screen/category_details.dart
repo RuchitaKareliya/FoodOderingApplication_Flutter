@@ -81,8 +81,7 @@ class CategoryDetails extends StatelessWidget {
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
-                                        Image.network(
-                                            data[index]['p_imgs'][0],
+                                        Image.network(data[index]['p_imgs'][0],
                                             height: 150,
                                             width: 200,
                                             fit: BoxFit.cover),
@@ -111,8 +110,10 @@ class CategoryDetails extends StatelessWidget {
                                         .padding(const EdgeInsets.all(12))
                                         .make()
                                         .onTap(() {
-                                      Get.to(() =>
-                                          ItemDetails(title: "${data[index]['p_name']}", data:data[index]));
+                                      controller.checkIffav(data[index]);
+                                      Get.to(() => ItemDetails(
+                                          title: "${data[index]['p_name']}",
+                                          data: data[index]));
                                     });
                                   }))
                         ],

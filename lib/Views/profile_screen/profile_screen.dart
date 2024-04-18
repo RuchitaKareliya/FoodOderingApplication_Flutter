@@ -11,6 +11,7 @@ import 'package:foododering_application/widgets_common/bg_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:foododering_application/consts/consts.dart';
 import 'package:get/get.dart';
+//import 'package:logger/logger.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -18,6 +19,7 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var controller = Get.put(ProfileController());
+    //var logger = Logger();
 
     return bgWidget(
       child: Scaffold(
@@ -32,8 +34,9 @@ class ProfileScreen extends StatelessWidget {
                   ),
                 );
               } else {
+                //logger.log(Level.info, snapshot.data!.size.toString());
                 var data = snapshot.data!.docs[0];
-
+                
                 return SafeArea(
                   child: Column(
                     children: [

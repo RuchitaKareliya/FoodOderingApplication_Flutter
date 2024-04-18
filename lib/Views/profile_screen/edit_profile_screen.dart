@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:foododering_application/consts/consts.dart';
@@ -39,7 +40,7 @@ class EditProfileScreen extends StatelessWidget {
                     : data['imageUrl'] != '' &&
                             controller.profileImgPath.isEmpty
                         ? Image.network(
-                            data['image'],
+                            data['imageUrl'],
                             width: 100,
                             fit: BoxFit.cover,
                           ).box.roundedFull.clip(Clip.antiAlias).make()
