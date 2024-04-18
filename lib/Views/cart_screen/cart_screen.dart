@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:foododering_application/Views/cart_screen/shipping_screen.dart';
 import 'package:foododering_application/consts/consts.dart';
 import 'package:foododering_application/controllers/cart_controller.dart';
 import 'package:foododering_application/services/firebase_services.dart';
@@ -15,6 +16,17 @@ class CartScreen extends StatelessWidget {
     var controller = Get.put(CartController());
     return Scaffold(
       backgroundColor: whiteColor,
+      bottomNavigationBar: SizedBox(
+        height: 60,
+        child: ourButton(
+          color: brownColor,
+          onPress: () {
+            Get.to(()=> const ShippingDetails());
+          },
+          textColor: whiteColor,
+          title: "Procced to Shipping",
+        ),
+      ),
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: "Shopping cart"
@@ -37,38 +49,44 @@ class CartScreen extends StatelessWidget {
           } else {
             var data = snapshot.data!.docs;
             controller.calculate(data);
-            
+
             return Padding(
               padding: const EdgeInsets.all(0.8),
               child: Column(
                 children: [
                   Expanded(
-                    child: Container(
-                      child: ListView.builder(
+                      child: Container(
+                    child: ListView.builder(
                         itemCount: data.length,
                         itemBuilder: (BuildContext context, int index) {
                           return ListTile(
-                            leading: Image.network(
-                              "${data[index]['img']}"
-                              
-                            ),
-                            title: "${data[index]['title']} (${data[index]['qty']})".text.fontFamily(semibold).make(),
-                            subtitle: "${data[index]['tprice']}".numCurrency.text.fontFamily(semibold).color(brownColor).make(),
-
-                            trailing: Icon(Icons.delete, color: brownColor,).onTap(() { 
+                            leading: Image.network("${data[index]['img']}"),
+                            title:
+                                "${data[index]['title']} (${data[index]['qty']})"
+                                    .text
+                                    .fontFamily(semibold)
+                                    .make(),
+                            subtitle: "${data[index]['tprice']}"
+                                .numCurrency
+                                .text
+                                .fontFamily(semibold)
+                                .color(brownColor)
+                                .make(),
+                            trailing: Icon(
+                              Icons.delete,
+                              color: brownColor,
+                            ).onTap(() {
                               FirestorServices.deleteDocument(data[index].id);
                             }),
                           );
-                        }
-                      ),
-                      )
-                      ),
+                        }),
+                  )),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       "Total Price".text.fontFamily(semibold).make(),
-                      Obx( () =>
-                      "${controller.totalP.value}"
+                      Obx(
+                        () => "${controller.totalP.value}"
                             .numCurrency
                             .text
                             .fontFamily(semibold)
@@ -83,15 +101,15 @@ class CartScreen extends StatelessWidget {
                       .width(context.screenWidth - 60)
                       .make(),
                   10.heightBox,
-                  SizedBox(
-                    width: context.screenWidth - 60,
-                    child: ourButton(
-                      color: brownColor,
-                      onPress: () {},
-                      textColor: whiteColor,
-                      title: "Procced to Shipping",
-                    ),
-                  )
+                  // SizedBox(
+                  //   width: context.screenWidth - 60,
+                  //   child: ourButton(
+                  //     color: brownColor,
+                  //     onPress: () {},
+                  //     textColor: whiteColor,
+                  //     title: "Procced to Shipping",
+                  //   ),
+                  // )
                 ],
               ),
             );

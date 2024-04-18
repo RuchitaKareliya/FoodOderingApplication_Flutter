@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:ui';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -18,10 +19,17 @@ class ProfileController extends GetxController {
   var oldpassController = TextEditingController();
   var newpassController = TextEditingController();
 
+  // File image;
+  //   try {
+  //     image = await ImagePicker.pickImage(
+  //         source: ImageSource.camera, imageQuality: 90);
+  //   } on Exception {
+  //     _showDialog(context);
+  //   }
   changeImage(context) async {
     try {
       //final File? img = ImagePicker().pickImage(source: ImageSource.gallery, imageQuality: 70) as File?; 
-      final img = await ImagePicker().pickImage(source: ImageSource.gallery, imageQuality: 70);
+      final img = await ImagePicker().pickImage(source: ImageSource.gallery, imageQuality: 90);
       if (img == null) return;
       profileImgPath.value = img.path;
     } on PlatformException catch (e) {
