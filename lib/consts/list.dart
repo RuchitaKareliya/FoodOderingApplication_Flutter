@@ -1,3 +1,4 @@
+import 'package:foododering_application/Views/cart_screen/payment_method.dart';
 import 'package:foododering_application/consts/consts.dart';
 
 const socialIconlist =[icFacebookLogo, icGoogleLogo, icTwitterLogo, icTwitterLogo, ];
@@ -20,5 +21,9 @@ const categoryImages = [
 
 const itemDetailButtonsList = [video,reviews,privacyPolicy,returnpolicy,supportpolicy,returnpolicy];
 
-const profileButtonsList= [orders,wishlist,messages];
-const profileButtonsIcon = [icOrder,icOrder,icMessages];
+const profileButtonsList= [orders,wishlist];//messages];
+const profileButtonsIcon = [icOrders,icHeart];//icMessages];
+
+const paymentMethodsImg = [imgPaypal, imgStripe, imgCod];
+
+const paymentMethods = [paypal,stripe,cod];

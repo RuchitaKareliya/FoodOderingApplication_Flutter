@@ -73,3 +73,5 @@ const searchanything = "Search anything...",
   //profile strings
 
   const wishlist = "My Wishlist", orders ="My Orders", messages="Messages",oldpass = "Old Password", newpass = "New Password";
+
+  const paypal = "Paypal", stripe  = "Stripe", cod = "Cash on delivery";

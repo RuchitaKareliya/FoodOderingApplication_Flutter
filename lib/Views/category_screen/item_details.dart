@@ -224,6 +224,7 @@ class ItemDetails extends StatelessWidget {
                     controller.addToCart(
                       //color: data['p_colors'][controller.colorIndex.value],
                       context: context,
+                      venderID: data['vender_id'],
                       img: data['p_imgs'][0],
                       qty: controller.quantity.value,
                       sellername: data['p_seller'],

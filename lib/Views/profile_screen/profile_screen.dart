@@ -1,8 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:foododering_application/Views/auth_screen/login_screen.dart';
+import 'package:foododering_application/Views/orders_screen/orders_screen.dart';
 import 'package:foododering_application/Views/profile_screen/components/details_card.dart';
 import 'package:foododering_application/Views/profile_screen/edit_profile_screen.dart';
+import 'package:foododering_application/Views/wishlist_screen/wishlist_screen.dart';
 import 'package:foododering_application/consts/list.dart';
 import 'package:foododering_application/controllers/auth_controller.dart';
 import 'package:foododering_application/controllers/profile_controller.dart';
@@ -128,6 +130,17 @@ class ProfileScreen extends StatelessWidget {
                         itemCount: profileButtonsList.length,
                         itemBuilder: (BuildContext context, int index) {
                           return ListTile(
+                            onTap: () {
+                              switch (index) {
+                                case 0:
+                                Get.to(() => OrdersScreen());
+                                break;
+                                case 1: 
+                                Get.to(() => WishlistScreen());
+                                break;
+                                
+                              }
+                            } ,
                             leading: Image.asset(
                               profileButtonsIcon[index],
                               width: 22,

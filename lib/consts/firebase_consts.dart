@@ -12,3 +12,5 @@ const UsersCollections = 'users';
 const productsCollections = 'products';
 
 const cartCollections = 'cart';
+
+const ordersCollections = 'orders';
