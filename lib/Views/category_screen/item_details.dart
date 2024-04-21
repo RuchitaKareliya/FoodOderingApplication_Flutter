@@ -8,13 +8,13 @@ import 'package:get/get.dart';
 
 class ItemDetails extends StatelessWidget {
  final String? title;
- final dynamic? data;
+ final dynamic data;
   const ItemDetails({Key? key,required this.title , this.data}): super(key:key);
 
   @override
   Widget build(BuildContext context) {
     //print(Colors.purple.value);
-    var controller = Get.find<ProductController>();
+    var controller = Get.put(ProductController());
 
     return WillPopScope(
       onWillPop: () async{
@@ -91,15 +91,15 @@ class ItemDetails extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.start,
                              children: [
-                               //"Seller".text.white.fontFamily(semibold).make(),
+                               "Seller".text.white.fontFamily(semibold).make(),
                                5.heightBox,
-                               //"${data['p_seller']}".text.fontFamily(semibold).color(darkFontGrey).size(16).make(),
+                               "${data['p_seller']}".text.fontFamily(semibold).color(darkFontGrey).size(16).make(),
                              ],
                           )),
-                          const CircleAvatar(
-                            backgroundColor: Colors.white,
-                            child:Icon(Icons.message_rounded,color: darkFontGrey),
-                          ),
+                          // const CircleAvatar(
+                          //   backgroundColor: Colors.white,
+                          //   child:Icon(Icons.message_rounded,color: darkFontGrey),
+                          // ),
                         ],
                       ).box.height(60).padding(const EdgeInsets.symmetric(horizontal: 16)).color(textfieldGrey).make(),
               
@@ -221,7 +221,8 @@ class ItemDetails extends StatelessWidget {
                 child:ourButton(
                   color:brownColor,
                   onPress: (){
-                    controller.addToCart(
+                    if(controller.quantity.value > 0){
+                      controller.addToCart(
                       //color: data['p_colors'][controller.colorIndex.value],
                       context: context,
                       venderID: data['vender_id'],
@@ -231,6 +232,9 @@ class ItemDetails extends StatelessWidget {
                       title: data['p_name'],
                       tprice: controller.totalPrice.value);
                       VxToast.show(context, msg: "Added to cart");
+                    }else{
+                      VxToast.show(context, msg: "Minimum 1 product is required");
+                    }
                   },
                   textColor: whiteColor,
                   title: "Add to cart",

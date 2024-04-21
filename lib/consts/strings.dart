@@ -49,7 +49,8 @@ const searchanything = "Search anything...",
     // girlsDress = "Girls Dresses",
 
     featuredProduct = "Product",
-    featuredCategories = "Categories";
+    featuredCategories = "Categories",
+    allProducts = "All products";
 
     // featuredProduct = "Featured Product",
     // featuredCategories = "Featured Categories";

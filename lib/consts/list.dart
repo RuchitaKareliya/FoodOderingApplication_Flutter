@@ -9,7 +9,7 @@ const secondSlidersList = [imgSs1, imgSs2, imgSs3, imgSs4];
 const featuredImages1 = [imgPizzaFood, imgSandwich, imgNoodle];
 const featuredImages2 = [imgIndian, imgSouthIndian, imgPunjabi];
 
-const featuredTitles1 = [pizzaFood, pizzaFood, noodel];
+const featuredTitles1 = [pizzaFood, sandwich, noodel];
 const featuredTitles2 = [indian, punjabi, southIndian];
 
 const categoriesList = [

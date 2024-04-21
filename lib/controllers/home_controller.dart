@@ -7,6 +7,10 @@ class HomeController extends GetxController {
   // chat application
   var username = '';
 
+  //var featuredList = [];
+
+  var searchController = TextEditingController();
+
   getUsername() async {
     var n = await firestore
         .collection(UsersCollections)
@@ -20,4 +24,8 @@ class HomeController extends GetxController {
     username = n;
     print(username);
   }
+
+
+
+
 }

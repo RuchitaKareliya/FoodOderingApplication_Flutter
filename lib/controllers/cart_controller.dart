@@ -38,7 +38,7 @@ class CartController extends GetxController {
     await getProductDetails();
     await firestore.collection(ordersCollections).doc().set({
       'order_by': currentUser!.uid,
-      'order_by_name': Get.find<HomeController>().username,
+      'order_by_name': Get.find<HomeController>()!.username,
       'order_by_email': currentUser!.email,
       'order_by_address': addressController.text,
       'order_by_state': stateController.text,
@@ -47,8 +47,9 @@ class CartController extends GetxController {
       'order_by_postalcode': postalcodeController.text,
       'shipping_method': "Home Delivery",
       'payment_method': orderPaymentMethod,
+      'order_date': DateTime.now(),
       'order_placed': true,
-      //'order_code': ordercodeController.text,
+      //'order_code': currentUser!.toString(),
       'order_confirmed': false,
       'order_delivered': false,
       'order_on_delivered': false,

@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:foododering_application/Views/orders_screen/orders_details.dart';
 import 'package:foododering_application/consts/consts.dart';
 import 'package:foododering_application/services/firebase_services.dart';
 import 'package:foododering_application/widgets_common/loading_indicator.dart';
@@ -36,7 +37,9 @@ class OrdersScreen extends StatelessWidget {
                     title: data[index]['order_by'].toString().text.color(brownColor).fontFamily(semibold).make(),
                     subtitle: data[index]['total_amount'].toString().numCurrency.text.fontFamily(bold).make(),
 
-                    trailing: IconButton(onPressed: () {}, icon: Icon(Icons.arrow_forward_ios_rounded, color: darkFontGrey,),),
+                    trailing: IconButton(onPressed: () {
+                      Get.to(() => OrdersDetails(data: data[index],),);
+                    }, icon: Icon(Icons.arrow_forward_ios_rounded, color: darkFontGrey),),
                   );
                 },
               );

@@ -12,6 +12,7 @@ import 'package:foododering_application/services/firebase_services.dart';
 import 'package:foododering_application/widgets_common/bg_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:foododering_application/consts/consts.dart';
+import 'package:foododering_application/widgets_common/loading_indicator.dart';
 import 'package:get/get.dart';
 //import 'package:logger/logger.dart';
 
@@ -21,6 +22,7 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var controller = Get.put(ProfileController());
+    //FirestorServices.getCounts();
     //var logger = Logger();
 
     return bgWidget(
@@ -38,7 +40,7 @@ class ProfileScreen extends StatelessWidget {
               } else {
                 //logger.log(Level.info, snapshot.data!.size.toString());
                 var data = snapshot.data!.docs[0];
-                
+
                 return SafeArea(
                   child: Column(
                     children: [
@@ -102,23 +104,51 @@ class ProfileScreen extends StatelessWidget {
                       ),
 
                       20.heightBox,
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          detailsCard(
-                              count: data['cart_count'],
-                              title: "in your cart",
-                              width: context.screenWidth / 3.4),
-                          detailsCard(
-                              count: data['wishlist_count'],
-                              title: "in your wishlist",
-                              width: context.screenWidth / 3.4),
-                          detailsCard(
-                              count: data['order_count'],
-                              title: "your order",
-                              width: context.screenWidth / 3.4),
-                        ],
+                      FutureBuilder(
+                        future: FirestorServices.getCounts(),
+                        builder:
+                            (BuildContext context, AsyncSnapshot snapshot) {
+                          if (!snapshot.hasData) {
+                            return Center(child: loadingIndicator());
+                          } else {
+                            var countData = snapshot.data;
+                            return Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                detailsCard(
+                                    count: countData[0].toString(),
+                                    title: "in your cart",
+                                    width: context.screenWidth / 3.4),
+                                detailsCard(
+                                    count: countData[1].toString(),
+                                    title: "in your wishlist",
+                                    width: context.screenWidth / 3.4),
+                                detailsCard(
+                                    count: countData[2].toString(),
+                                    title: "your order",
+                                    width: context.screenWidth / 3.4),
+                              ],
+                            );
+                          }
+                        },
                       ),
+                      // Row(
+                      //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      //   children: [
+                      //     detailsCard(
+                      //         count: data['cart_count'],
+                      //         title: "in your cart",
+                      //         width: context.screenWidth / 3.4),
+                      //     detailsCard(
+                      //         count: data['wishlist_count'],
+                      //         title: "in your wishlist",
+                      //         width: context.screenWidth / 3.4),
+                      //     detailsCard(
+                      //         count: data['order_count'],
+                      //         title: "your order",
+                      //         width: context.screenWidth / 3.4),
+                      //   ],
+                      // ),
 
                       //Buttons Section
 
@@ -133,14 +163,13 @@ class ProfileScreen extends StatelessWidget {
                             onTap: () {
                               switch (index) {
                                 case 0:
-                                Get.to(() => OrdersScreen());
-                                break;
-                                case 1: 
-                                Get.to(() => WishlistScreen());
-                                break;
-                                
+                                  Get.to(() => OrdersScreen());
+                                  break;
+                                case 1:
+                                  Get.to(() => WishlistScreen());
+                                  break;
                               }
-                            } ,
+                            },
                             leading: Image.asset(
                               profileButtonsIcon[index],
                               width: 22,
